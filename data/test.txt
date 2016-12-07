@@ -1,0 +1,14 @@
+{
+    "Skeleton":
+    {
+        "Joints":
+        [
+            {
+                "Name":"root",
+                "Type":1
+            }
+        ],
+        "hey":"hey"
+    },
+    "Hey":"hey"
+}
