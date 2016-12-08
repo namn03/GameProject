@@ -19,9 +19,7 @@ public class Character {
 		Mesh mesh = root.GetComponent<MeshFilter> ().mesh;
 		mesh.vertices = StretchMesh (mesh.vertices, body.Param0, body.Param1);
 		mesh.RecalculateBounds();
-		Mesh newmesh = new Mesh();
-		newmesh.vertices = StretchMesh (mesh.vertices, 0.01f, 0.01f);
-		root.GetComponent<MeshCollider> ().sharedMesh = newmesh;
+		root.GetComponent<MeshCollider> ().sharedMesh = mesh;
 		mBodies.Add (root);
 
 		for (int i = 1; i < mjsonObject.Skeleton.Joints.Count; i++) {
@@ -56,7 +54,7 @@ public class Character {
 			JointSpring spring = new JointSpring ();
 			JsonPDController pd = mjsonObject.PDControllers [i];
 			spring.targetPosition = Mathf.Rad2Deg * pd.TargetTheta;
-			spring.spring = 10*pd.Kd;
+			spring.spring = 20*pd.Kd;
 			spring.damper = 0.1f*pd.Kp;
 			hingeJoint.spring = spring;
 
@@ -72,8 +70,6 @@ public class Character {
 			mesh = obj.GetComponent<MeshFilter> ().mesh;
 			mesh.vertices = StretchMesh (mesh.vertices, body.Param0, body.Param1);
 			mesh.RecalculateBounds();
-			newmesh = new Mesh();
-			newmesh.vertices = StretchMesh (mesh.vertices, 0.01f, 0.01f);
 			obj.GetComponent<MeshCollider> ().sharedMesh = mesh;
 
 			obj.GetComponent<Rigidbody> ().mass = body.Mass;

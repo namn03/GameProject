@@ -27,8 +27,8 @@ public class CreateCharacter : MonoBehaviour {
 		float[] t = mController.getTau(action, mCharacter);
 		mCharacter.simulate (t);
 
-		if (Input.anyKeyDown) {
-		//if (lastTime + 0.125 < time) {
+		//if (Input.anyKeyDown) {
+		if (lastTime + 0.125 < time) {
 			mController.advanceState ();
 			lastTime = time;
 		}
